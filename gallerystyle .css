@@ -1,3 +1,4 @@
+/* Gallery container */
 .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -6,22 +7,34 @@
     margin-top: 20px;
 }
 
+/* Individual gallery item */
 .gallery-item {
     background-color: #e9f7e9;
     border-radius: 5px;
     overflow: hidden;
     text-align: center;
-    flex: 1 1 calc(33% - 20px); /* 3 items per row with spacing */
-    max-width: calc(33% - 20px); /* Ensure items don't stretch too wide */
+    flex: 1 1 calc(25% - 20px); /* 4 items per row with spacing */
+    max-width: calc(25% - 20px); /* Ensure items don't stretch too wide */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add space between rows */
 }
 
+/* Image inside each gallery item */
 .gallery-item img {
-    width: 100%;
-    height: auto;
+    width: 100%;  /* Scale image based on container */
+    max-width: 150px;  /* Limit image width to 150px */
+    height: 150px;  /* Maintain aspect ratio */
     display: block;
+    margin: 0 auto;  /* Center the image */
+    transition: transform 0.3s ease; /* Smooth hover effect */
 }
 
+/* Hover effect on image */
+.gallery-item img:hover {
+    transform: scale(1.05); /* Slight zoom on hover */
+}
+
+/* Text below each image */
 .gallery-item p {
     margin: 10px 0;
     color: #4CAF50;
