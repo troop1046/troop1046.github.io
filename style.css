@@ -3,35 +3,49 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    line-height: 1.6; /* Improves text readability */
 }
 
 header {
     background-color: #4CAF50;
     color: white;
-    padding: 10px 0;
+    padding: 20px 0; /* Increased padding for a more prominent header */
     text-align: center;
 }
 
 nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Centering the navigation menu */
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 10px;
+    margin: 0 15px; /* Equal spacing between navigation items */
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
+    font-weight: bold; /* Bold text for navigation links */
 }
 
 section {
-    margin: 20px;
+    margin: 20px auto; /* Center the section on the page */
     padding: 20px;
     background-color: white;
     border-radius: 5px;
+    max-width: 800px; /* Restrict width for better readability */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
+}
+
+h2 {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0; /* Rounded corners for top of section */
+    margin-top: 0;
 }
 
 footer {
@@ -39,7 +53,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: fixed;
+    position: relative; /* Changed to relative to avoid content overlap */
+    margin-top: 40px; /* Spacing from the content */
     width: 100%;
-    bottom: 0;
 }
