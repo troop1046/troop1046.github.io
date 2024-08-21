@@ -21,7 +21,7 @@
 
     <main>
         <h1>Upload Photos</h1>
-        <form action="https://formspree.io/f/xzzpvnzn" method="POST" enctype="multipart/form-data">
+        <form id="uploadForm">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -36,10 +36,50 @@
 
             <button type="submit">Submit</button>
         </form>
+
+        <div id="status"></div>
     </main>
 
     <footer>
         <p>&copy; 2024 Troop 1046. All rights reserved.</p>
     </footer>
+
+    <script>
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        const token = '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'; // Replace with your PAT
+        const owner = 'troop1046'; // Replace with your GitHub username
+        const repo = 'troop1046.github.io'; // Replace with your repository name
+        const path = `uploads/${document.getElementById('photo').files[0].name}`; // Path where file will be uploaded
+        
+        const file = document.getElementById('photo').files[0];
+        const reader = new FileReader();
+        
+        reader.onloadend = async function() {
+            const content = btoa(reader.result); // Convert file to Base64
+            
+            const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `token ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: `Upload ${file.name}`,
+                    content: content
+                })
+            });
+            
+            if (response.ok) {
+                document.getElementById('status').innerText = "File uploaded successfully!";
+            } else {
+                document.getElementById('status').innerText = "Failed to upload file.";
+            }
+        };
+        
+        reader.readAsBinaryString(file);
+    });
+    </script>
 </body>
 </html>
