@@ -93,3 +93,25 @@ footer {
     margin-top: 40px; /* Add margin for spacing from content */
     width: 100%;
 }
+
+/* ==========================================
+   MOBILE RESPONSIVENESS (Screens 600px and under)
+   ========================================== */
+@media (max-width: 600px) {
+    /* Reduces padding on the main container so photos have more room */
+    section {
+        margin: 10px;
+        padding: 10px;
+    }
+
+    /* Switches the grid to 2 neat columns on mobile instead of forcing widths */
+    .gallery {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; /* Tighter spacing for smaller screens */
+    }
+
+    /* Scales down the thumbnail height so they don't look awkwardly tall and stretched */
+    .gallery-item img {
+        height: 140px; 
+    }
+}
